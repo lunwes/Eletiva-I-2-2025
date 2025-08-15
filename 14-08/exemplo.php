@@ -7,7 +7,9 @@
 </head>
 <body>
     <?php
-        $dia = date("d")
+        $dia = date("d");
+
+        echo "<p> $dia </p>";
     ?>
     <h1> Hoje é dia <?= $dia ?> de Agosto de 2025 </h1>
 </body>
