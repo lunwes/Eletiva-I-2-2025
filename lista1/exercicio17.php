@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Juros Compostos</title>
+  <title>Juros simples</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <?php
@@ -12,7 +12,7 @@
 include("cabecalho.php");
 ?>
 <div class="container py-3">
-  <h1>Exercício 18</h1>
+  <h1>Exercício 17</h1>
   <form method="post">
     <div class="mb-3">
       <label for="capital" class="form-label">Informe um capital</label>
@@ -35,7 +35,7 @@ include("cabecalho.php");
     $taxa = $_POST['taxa'];
     $periodo = $_POST['periodo'];
 
-    $juros = $capital * (1 + ($taxa / 100)) ** $periodo;
+    $juros = $capital * ($taxa / 100) * $periodo;
 
     echo "O valor dos juros é: $juros";
   }
