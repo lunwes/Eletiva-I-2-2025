@@ -26,24 +26,6 @@
     <li><a class="dropdown-item" href="exercicio10.php">Exercício 10</a></li>
   </ul>
 </li>
-
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="dropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Exercícios de 11 a 20
-  </a>
-  <ul class="dropdown-menu" aria-labelledby="dropdown2">
-  <li><a class="dropdown-item" href="exercicio11.php">Exercício 11</a></li>
-    <li><a class="dropdown-item" href="exercicio12.php">Exercício 12</a></li>
-    <li><a class="dropdown-item" href="exercicio13.php">Exercício 13</a></li>
-    <li><a class="dropdown-item" href="exercicio14.php">Exercício 14</a></li>
-    <li><a class="dropdown-item" href="exercicio15.php">Exercício 15</a></li>
-    <li><a class="dropdown-item" href="exercicio16.php">Exercício 16</a></li>
-    <li><a class="dropdown-item" href="exercicio17.php">Exercício 17</a></li>
-    <li><a class="dropdown-item" href="exercicio18.php">Exercício 18</a></li>
-    <li><a class="dropdown-item" href="exercicio19.php">Exercício 19</a></li>
-    <li><a class="dropdown-item" href="exercicio20.php">Exercício 20</a></li>
-  </ul>
-</li>
       </ul>
     </div>
   </div>
