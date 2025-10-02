@@ -12,7 +12,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown1" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              Exercícios de 1 a 10
+              Exercícios de 1 a 5
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdown1">
               <li><a class="dropdown-item" href="exercicio1.php">Exercício 1</a></li>
@@ -26,4 +26,5 @@
       </div>
     </div>
   </nav>
+
   <div class="container py-3"> <!-- Comentário em HTML -->
