@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $cliente = $_POST['cliente'];
     $roupa_recebida = $_POST['roupa_recebida'] ?? null;
 
-    // Corrige o valor para NULL quando estiver vazio
     $roupa_recebida = (empty($roupa_recebida)) ? null : $roupa_recebida;
 
     try {
@@ -49,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         } else {
             roupaRecebidaDiv.style.display = 'none';
             roupaRecebidaSelect.required = false;
-            // Limpa a seleção quando não for troca
             roupaRecebidaSelect.value = '';
         }
     } 
@@ -112,7 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </form>
 
 <script>
-    // Inicializa o estado do campo roupa recebida
     toggleRoupaRecebida();
 </script>
 

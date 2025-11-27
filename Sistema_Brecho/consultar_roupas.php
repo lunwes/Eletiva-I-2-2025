@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         transform: scale(1.35);
     }
 
-    /* Estilo do modal personalizado */
     .modal-custom .modal-content {
         background-color: #FFE8D6;
         border: 2px solid #FFBC8A;

@@ -1,6 +1,5 @@
-</div> <!-- Fecha o container-custom -->
-</div> <!-- Fecha o main-content -->
-
+</div> 
+</div> 
 <footer class="footer-brecho">
   <div class="container">
     Sistema de Gerenciamento de Brechó<br />
@@ -29,7 +28,6 @@
 </script>
 
 <style>
-/* Rodapé grudado no fim */
 .footer-brecho {
   flex-shrink: 0;
   padding: 15px 0;
@@ -39,7 +37,6 @@
   border-top: 1px solid #FFBC8A;
   color: #7a5946;
   user-select: none;
-  margin-top: auto; /* Isso empurra o footer para baixo */
   width: 100%;
 }
 </style>

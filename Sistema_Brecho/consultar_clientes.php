@@ -39,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         transform: scale(1.35);
     }
 
-    /* Estilo do modal personalizado */
     .modal-custom .modal-content {
         background-color: #FFE8D6;
         border: 2px solid #FFBC8A;
@@ -92,7 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
 </form>
 
-<!-- Modal de Confirmação -->
 <div class="modal fade modal-custom" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

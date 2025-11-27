@@ -25,7 +25,6 @@ if (!isset($_SESSION['acesso'])) {
             --cor-texto: #5A3E2B;
         }
 
-        /* Estrutura principal para sticky footer */
         html, body {
             height: 100%;
             margin: 0;

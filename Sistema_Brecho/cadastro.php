@@ -68,7 +68,6 @@
       <?php
       require("conexao.php");
 
-      // Mensagem de retorno de cadastro via GET
       if (isset($_GET['cadastro'])) {
         $cadastro = $_GET['cadastro'];
         echo $cadastro
@@ -76,7 +75,6 @@
           : "<p class='text-danger text-center'>Erro ao realizar o cadastro!</p>";
       }
 
-      // Processar POST
       if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
@@ -85,11 +83,9 @@
         try {
           $stmt = $pdo->prepare("INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)");
           if ($stmt->execute([$nome, $email, $senha])) {
-            // cadastro deu certo, redireciona para login
             header("location: index.php?cadastro=true");
             exit;
           } else {
-            // erro, permanece na tela de cadastro e mostra mensagem
             $erroCadastro = "Erro ao realizar o cadastro. Tente novamente.";
           }
 

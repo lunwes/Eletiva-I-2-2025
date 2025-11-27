@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $cliente = $_POST['cliente'];
     $roupa_recebida = $_POST['roupa_recebida'] ?? null;
 
-    // Corrige o valor para NULL quando estiver vazio
     $roupa_recebida = (empty($roupa_recebida)) ? null : $roupa_recebida;
 
     $id = $_POST['id'];
@@ -120,7 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </form>
 
 <script>
-    // Inicializa o estado do campo roupa recebida
     toggleRoupaRecebida();
 </script>
 
