@@ -1,26 +1,36 @@
 <?php
 require("cabecalho.php");
 require("conexao.php");
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $nome = $_POST['nome'];
+    $telefone = $_POST['telefone'];
+
     try {
-        $stmt = $pdo->prepare("INSERT INTO roupas_tipos (descricao) VALUES (?)");
-        if ($stmt->execute([$nome])) {
-            header('location: tipos.php?cadastro=true');
+        $stmt = $pdo->prepare("
+            INSERT INTO clientes (nome, telefone) VALUES
+            (?, ?)
+        ");
+        if ($stmt->execute([$nome, $telefone])) {
+            header("location: clientes.php?cadastro=true");
         } else {
-            header('location: tipos.php?cadastro=false');
+            header("location: clientes.php?cadastro=false");
         }
-    } catch (\Exception $e) {
-        echo "Erro: " . $e->getMessage();
+    } catch (Exception $e) {
+        echo "Erro ao inserir: " . $e->getMessage();
     }
 }
 ?>
 
-<h1>Novo Tipo de Roupa</h1>
+<h1>Novo Cliente</h1>
 <form method="post">
     <div class="mb-3">
-        <label for="nome" class="form-label mb-3">Informe o nome do novo tipo de roupa</label>
+        <label for="nome" class="form-label">Informe o nome</label>
         <input type="text" id="nome" name="nome" class="form-control" required="">
+    </div>
+    <div class="mb-3">
+        <label for="telefone" class="form-label">Informe o telefone</label>
+        <input type="text" id="telefone" name="telefone" class="form-control" required="">
     </div>
     <div class="d-flex justify-content-end mt-3 gap-3">
         <button type="submit" class="btn"
@@ -36,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </button>
     </div>
 </form>
-
 
 <?php
 require("rodape.php");

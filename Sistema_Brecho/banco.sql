@@ -72,6 +72,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `brecho`.`transacao` (
   `idtransacao` INT NOT NULL,
+  `data` DATETIME,
   `tipo` VARCHAR(45) NOT NULL,
   `roupas_idroupas` INT NOT NULL,
   `clientes_idclientes` INT NOT NULL,

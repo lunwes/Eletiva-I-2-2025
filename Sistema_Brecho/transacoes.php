@@ -3,8 +3,13 @@ require("cabecalho.php");
 require("conexao.php");
 
 try {
-    $stmt = $pdo->query("SELECT t.descricao as tipo_descricao, r.* FROM roupas r
-                            INNER JOIN roupas_tipos t ON t.idtipo = r.roupas_tipos_idtipo");
+    $stmt = $pdo->query("SELECT t.idtransacao, t.tipo, t.data_transacao, r.modelo, 
+                         rr.modelo as roupa_recebida, c.nome as cliente_nome 
+                         FROM transacao t
+                         INNER JOIN roupas r ON r.idroupas = t.roupas_idroupas
+                         INNER JOIN clientes c ON c.idclientes = t.clientes_idclientes
+                         LEFT JOIN roupas rr ON rr.idroupas = t.roupa_recebida_id
+                         ORDER BY t.data_transacao DESC");
     $dados = $stmt->fetchAll();
 } catch (\Exception $e) {
     echo "Erro: " . $e->getMessage();
@@ -94,29 +99,34 @@ if (isset($_GET['excluir'])) {
 }
 </style>
 
-<h2 class="mb-5" style="color: #8d6a4eff">Roupas disponíveis na loja</h2>
+<h2 class="mb-5" style="color: #8d6a4eff">Transações</h2>
+
 <table class="table tabela-estilizada">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Modelo</th>
-            <th>Preço</th>
             <th>Tipo</th>
-            <th class="no-print">Ações</th>
+            <th>Data</th>
+            <th>Roupa</th>
+            <th>Roupa Recebida</th>
+            <th>Cliente</th>
+            <th style="width: 120px;">Ações</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($dados as $d): ?>
             <tr>
-                <td><?= $d['idroupas'] ?></td>
+                <td><?= $d['idtransacao'] ?></td>
+                <td><?= ucfirst($d['tipo']) ?></td>
+                <td><?= date('d/m/Y H:i', strtotime($d['data_transacao'])) ?></td>
                 <td><?= $d['modelo'] ?></td>
-                <td>R$ <?= number_format($d['preco'], 2, ',', '.') ?></td>
-                <td><?= $d['tipo_descricao'] ?></td>
-                <td class="d-flex gap-3 no-print">
-                    <a href="editar_roupas.php?id=<?= $d['idroupas'] ?>" data-bs-toggle="tooltip" title="Editar">
+                <td><?= $d['roupa_recebida'] ?? '-' ?></td>
+                <td><?= $d['cliente_nome'] ?></td>
+                <td class="d-flex gap-3">
+                    <a href="editar_transacoes.php?id=<?= $d['idtransacao'] ?>" data-bs-toggle="tooltip" title="Editar">
                         <i class="bi bi-pencil-square icone-acao"></i>
                     </a>
-                    <a href="consultar_roupas.php?id=<?= $d['idroupas'] ?>" data-bs-toggle="tooltip" title="Consultar">
+                    <a href="consultar_transacoes.php?id=<?= $d['idtransacao'] ?>" data-bs-toggle="tooltip" title="Consultar">
                         <i class="bi bi-search icone-acao"></i>
                     </a>
                 </td>
@@ -126,7 +136,7 @@ if (isset($_GET['excluir'])) {
 </table>
 
 <div class="text-end">
-    <a href="nova_roupa.php" data-bs-toggle="tooltip" title="Novo" class="botao-novo">
+    <a href="nova_transacao.php" data-bs-toggle="tooltip" title="Novo" class="botao-novo">
         <i class="bi bi-plus fs-1"></i>
     </a>
 </div>

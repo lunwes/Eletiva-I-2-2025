@@ -3,8 +3,7 @@ require("cabecalho.php");
 require("conexao.php");
 
 try {
-    $stmt = $pdo->query("SELECT t.descricao as tipo_descricao, r.* FROM roupas r
-                            INNER JOIN roupas_tipos t ON t.idtipo = r.roupas_tipos_idtipo");
+    $stmt = $pdo->query("SELECT * FROM clientes");
     $dados = $stmt->fetchAll();
 } catch (\Exception $e) {
     echo "Erro: " . $e->getMessage();
@@ -94,29 +93,26 @@ if (isset($_GET['excluir'])) {
 }
 </style>
 
-<h2 class="mb-5" style="color: #8d6a4eff">Roupas disponíveis na loja</h2>
+<h2 class="mb-5" style="color: #8d6a4eff">Clientes</h2>
+
 <table class="table tabela-estilizada">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Modelo</th>
-            <th>Preço</th>
-            <th>Tipo</th>
-            <th class="no-print">Ações</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th style="width: 120px;">Ações</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($dados as $d): ?>
             <tr>
-                <td><?= $d['idroupas'] ?></td>
-                <td><?= $d['modelo'] ?></td>
-                <td>R$ <?= number_format($d['preco'], 2, ',', '.') ?></td>
-                <td><?= $d['tipo_descricao'] ?></td>
-                <td class="d-flex gap-3 no-print">
-                    <a href="editar_roupas.php?id=<?= $d['idroupas'] ?>" data-bs-toggle="tooltip" title="Editar">
+                <td><?= $d['nome'] ?></td>
+                <td><?= $d['telefone'] ?></td>
+                <td class="d-flex gap-3">
+                    <a href="editar_clientes.php?id=<?= $d['idclientes'] ?>" data-bs-toggle="tooltip" title="Editar">
                         <i class="bi bi-pencil-square icone-acao"></i>
                     </a>
-                    <a href="consultar_roupas.php?id=<?= $d['idroupas'] ?>" data-bs-toggle="tooltip" title="Consultar">
+                    <a href="consultar_clientes.php?id=<?= $d['idclientes'] ?>" data-bs-toggle="tooltip" title="Consultar">
                         <i class="bi bi-search icone-acao"></i>
                     </a>
                 </td>
@@ -126,7 +122,7 @@ if (isset($_GET['excluir'])) {
 </table>
 
 <div class="text-end">
-    <a href="nova_roupa.php" data-bs-toggle="tooltip" title="Novo" class="botao-novo">
+    <a href="novo_cliente.php" data-bs-toggle="tooltip" title="Novo" class="botao-novo">
         <i class="bi bi-plus fs-1"></i>
     </a>
 </div>
